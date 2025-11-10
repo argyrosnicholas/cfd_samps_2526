@@ -1,15 +1,15 @@
 # cfd_samps_2526
 🌀 Solving Computational Fluid Dynamics (CFD) problems using MATLAB. This repository contains the code for various course assignments, demonstrating the implementation of numerical schemes for fluid flow analysis. A portfolio piece focused on the intersection of engineering principles and scientific programming.
 
-1η ΣΕΙΡΑ ΑΣΚΗΣΕΩΝ (Ακ. Έτος: 2025-26)
-(Αριθμητική επίλυση εξισώσεων και συστημάτων αλγεβρικών εξισώσεων)
-Οι παρακάτω ασκήσεις είναι από το βιβλίο: Burden R. and Faires J., (2011). Numerical Analysis, 9th Edition, Brooks/Cole, Cengage Learning.
+1st SET OF EXERCISES (Academic Year: 2025-26)
+(Numerical solution of equations and systems of algebraic equations)
 
-Άσκηση 1.1: Επίλυση τριδιαγώνιου συστήματος με τον αλγόριθμο Thomas
-Αρχείο: cfdex11.m
+The following exercises are from the book: Burden, R. and Faires, J. (2011). Numerical Analysis, 9th Edition, Brooks/Cole, Cengage Learning.
 
-Υλοποίηση του αλγορίθμου Thomas στην γλώσσα προγραμματισμού Matlab για την επίλυση του παρακάτω τριδιαγώνιου συστήματος:
-code
+Exercise 1.1: Solving a tridiagonal system using the Thomas algorithm
+File: cfdex11.m
+
+Implementation of the Thomas algorithm in the MATLAB programming language to solve the following tridiagonal system:
 Code
 2x₁ -  x₂                              =  1
  x₁ + 2x₂ -  x₃                        =  2
@@ -17,20 +17,20 @@ Code
               2x₄ - x₅                 = -2
                x₄ + 2x₅                = -1
 
-Άσκηση 1.2: Επαναληπτικές μέθοδοι επίλυσης γραμμικών συστημάτων
-Αρχείο: cfdex12.m
+Exercise 1.2: Iterative methods for solving linear systems
+File: cfdex12.m
 
-Υλοποίηση στην γλώσσα προγραμματισμού Matlab της επίλυσης του συστήματος της άσκησης Exercise set 7.3: 1(c) (σελίδα 459) με τις μεθόδους:
--Jacobi
--Gauss-Seidel
--Διαδοχικής χαλάρωσης (Successive Over-Relaxation - SOR) με ω = 1.1
-Ως αρχική εκτίμηση της λύσης μπορεί να θεωρηθεί η x⁽⁰⁾ = 0.
+Implementation in the Matlab programming language of the solution for the system from Exercise set 7.3: 1(c) (page 459) using the following methods:
+> Jacobi
+> Gauss-Seidel
+> Successive Over-Relaxation (SOR) with ω = 1.1
+An initial guess of x⁽⁰⁾ = 0 can be used for the solution.
 
-Άσκηση 1.3: Επίλυση συστημάτων μη γραμμικών εξισώσεων
-Αρχείο: cfdex13.m
+Exercise 1.3: Solving systems of nonlinear equations
+File: cfdex13.m
 
-Υλοποίηση στην γλώσσα προγραμματισμού Matlab της επίλυσης του συστήματος της άσκησης Exercise set 10.2: 2(b) (σελίδα 644).
-Ως αρχική εκτίμηση της λύσης μπορεί να θεωρηθεί η x⁽⁰⁾ = 0.
+Implementation in the Matlab programming language of the solution for the system from Exercise set 10.2: 2(b) (page 644).
+An initial guess of x⁽⁰⁾ = 0 can be used for the solution.
 
-Παρατήρηση για τις ασκήσεις 1.2 και 1.3:
-Ο κώδικας που θα αναπτυχθεί θα πρέπει να συγκλίνει σύμφωνα με το επιθυμητό επίπεδο ακρίβειας που θα επιλεγεί από τον φοιτητή για την επίλυση του συστήματος εξισώσεων και όχι να εκτελείται μόνο για συγκεκριμένο αριθμό επαναλήψεων που τυχόν μπορεί να αναφέρεται στην εκφώνηση των ασκήσεων.
+Note for exercises 1.2 and 1.3:
+The developed code should converge according to a desired level of accuracy selected by the student for the solution of the system of equations, and should not be executed only for a specific number of iterations that might be mentioned in the exercise description.
