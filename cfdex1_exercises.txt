@@ -1,0 +1,44 @@
+COMPUTATIONAL FLUID DYNAMICS
+9th SEMESTER, S.E.M.P.H.E.
+1st SET OF EXERCISES
+Academic Year: 2025-26
+
+--------------------------------------------------
+
+1st SET OF EXERCISES
+(Numerical solution of equations and systems of algebraic equations)
+
+The following exercises are from the book: Burden R. and Faires J., (2011). Numerical Analysis, 9th Edition, Brooks/Cole, Cengage Learning.
+
+
+Exercise 1.1
+----------------
+Implement in the Matlab programming language the Thomas algorithm for the solution of the following tridiagonal system:
+
+  2x1 -  x2                  =  1
+   x1 + 2x2 -  x3             =  2
+        2x2 + 4x3 -  x4        = -1
+                    2x4 - x5  = -2
+                     x4 + 2x5 = -1
+
+
+Exercise 1.2
+----------------
+Implement in the Matlab programming language the solution of the system from Exercise set 7.3: 1(c) (page 459) using the following methods:
+1. Jacobi
+2. Gauss-Seidel
+3. Successive Over-Relaxation (SOR) with ω=1.1
+
+You can consider x(0)=0 as an initial estimate for the solution.
+
+
+Exercise 1.3
+----------------
+Implement in the Matlab programming language the solution of the system from Exercise set 10.2: 2(b) (page 644).
+
+You can consider x(0)=0 as an initial estimate for the solution.
+
+
+Note for exercises 1.2 and 1.3:
+---------------------------------------------
+The code to be developed must converge according to the desired level of accuracy selected by the student for the solution of the system of equations and should not just run for a specific number of iterations that might be mentioned in the exercise description.
