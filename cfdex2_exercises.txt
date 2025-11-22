@@ -1,0 +1,29 @@
+COMPUTATIONAL FLUID DYNAMICS
+9th SEMESTER, S.A.M.P.S.
+2nd SET OF EXERCISES
+Academic Year: 2025-26
+
+--------------------------------------------------
+
+2nd SET OF EXERCISES
+(Numerical solution of ordinary differential equations - initial value problems)
+
+
+Exercise 2.1
+----------------
+Implement in the Matlab programming language the solution of the initial value problem:
+y' = 1 + (t - y)^2,  y(2) = 1,  2 ≤ t ≤ 3,
+
+using the following methods:
+1. Explicit Euler method.
+2. Implicit Euler method.
+3. Runge-Kutta 2nd order.
+4. Runge-Kutta 3rd order.
+5. Runge-Kutta 4th order.
+
+Given that the analytical solution of the above problem is:
+y(t) = t + 1 / (1 - t)
+
+Perform a comparison between the analytical and numerical solutions by calculating the error for all methods.
+
+The results, apart from their numerical form, must also be presented in the form of diagrams.
