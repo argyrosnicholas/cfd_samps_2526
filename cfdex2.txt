@@ -1,0 +1,169 @@
+% Problem: Επίλυση Προβλήματος Αρχικών Τιμών (Π.Α.Τ.) με αριθμητικές
+% μεθόδους
+% Input: Ένα συγκεκριμένο Π.Α.Τ.
+% Expected Output: Η επίλυση του Π.Α.Τ. μέσω των μεθόδων: 1) Ρητή μέθοδος
+% Euler, 2) Πεπλεγμένη μέθοδος Euler, 3) Runge-Kutta (RK) 2ης τάξης, 4) RK
+% 3ης τάξης, 5) RK 4ης τάξης
+% Extra: Σύγκριση μεθόδων βάσει σφάλματος και πολυπλοκότητας, Γραφική
+% απεικόνιση και σύγκριση
+
+% Εκκαθάριση του περιβάλλοντος από προηγούμενες διεργασίες %\
+clear;clc
+
+% Ορισμός του Π.Α.Τ. της εκφώνησης μέσω των επιμέρως στοιχείων του:
+% α) Διαφορική Εξίσωση
+% β) Αρχική Συνθήκη
+% γ) Πεδίο Ορισμού
+
+f=@(t,y) 1+(t-y).^2;
+y2=1;
+t=[2 3];
+
+% Ορισμός αριθμού κόμβων N και υπολογισμός βήματος διαμέρισης h %
+N=11;
+h=(t(2)-t(1))/(N-1);
+t_nodes=linspace(t(1),t(2),N);
+% Ορισμός σφάλματος (για μετέπειτα στάδια) %
+tol=1e-06;
+
+
+% 1. Ρητή Μέθοδος Euler
+tic
+
+% Αρχικοποίηση του διανύσματος y %
+y_eulerExp=zeros(1,N);
+y_eulerExp(1)=y2;
+
+for i=1:N-1
+    y_eulerExp(i+1)=y_eulerExp(i)+h*f(t_nodes(i),y_eulerExp(i));
+end
+
+time_eulerExp=toc;
+
+
+% 2. Πεπλεγμένη Μέθοδος Euler
+tic
+y_eulerImp=zeros(1,N);
+y_eulerImp(1)=y2;
+
+for i=1:N-1
+    y_k=y_eulerImp(i)+h*f(t_nodes(i),y_eulerImp(i));
+    diff_eulerImp=tol+1;
+    
+    while diff_eulerImp>=tol
+        k1=f(t_nodes(i),y_eulerImp(i));
+        k2=f(t_nodes(i+1),y_k);
+        y_kplus1=y_eulerImp(i)+(h/2)*(k1+k2);
+        
+        diff_eulerImp=abs(y_kplus1-y_k);
+        
+        y_k = y_kplus1; 
+    end
+    
+    y_eulerImp(i+1) = y_k;
+end
+
+clear diff_eulerImp;
+clear k1; clear k2;
+clear y_k;clear y_kplus1;
+time_eulerImp=toc;
+
+
+% 3. Runge-Kutta 2ης τάξεως (RK2)
+tic
+y_RK2=zeros(1,N);
+y_RK2(1)=y2;
+
+for i=1:N-1
+    k1=f(t_nodes(i),y_RK2(i));
+    k2=f(t_nodes(i)+h,y_RK2(i)+h*k1);
+    y_RK2(i+1)=y_RK2(i)+(h/2)*(k1+k2);
+end
+
+clear k1; clear k2;
+time_RK2=toc;
+
+
+% 4. Runge-Kutta 3ης τάξεως (RK3)
+tic
+y_RK3=zeros(1,N);
+y_RK3(1)=y2;
+
+for i=1:N-1
+    k1=f(t_nodes(i),y_RK3(i));
+    k2=f(t_nodes(i)+(h/2),y_RK3(i)+(h/2)*k1);
+    k3=f(t_nodes(i)+h,y_RK3(i)+h*k2);
+    y_RK3(i+1)=y_RK3(i)+(h/6)*(k1+4*k2+k3);
+end
+
+clear k1; clear k2; clear k3;
+time_RK3=toc;
+
+
+% 5. Runge-Kutta 4ης τάξεως (RK4)
+tic
+y_RK4=zeros(1,N);
+y_RK4(1)=y2;
+
+for i=1:N-1
+    k1=f(t_nodes(i),y_RK4(i));
+    k2=f(t_nodes(i)+(h/2),y_RK4(i)+(h/2)*k1);
+    k3=f(t_nodes(i)+(h/2),y_RK4(i)+(h/2)*k2);
+    k4=f(t_nodes(i)+h,y_RK4(i)+h*k3);
+    y_RK4(i+1)=y_RK4(i)+(h/6)*(k1+2*k2+2*k3+k4);
+end
+
+clear i;
+clear k1; clear k2; clear k3; clear k4;
+time_RK4=toc;
+
+
+% Ορισμός Αναλυτικής Λύσης %
+g=@(t) t+1./(1-t);
+y=g(t_nodes);
+
+err_Exp = max(abs(y_eulerExp - y));
+err_Imp = max(abs(y_eulerImp - y));
+err_RK2 = max(abs(y_RK2 - y));
+err_RK3 = max(abs(y_RK3 - y));
+err_RK4 = max(abs(y_RK4 - y));
+
+Col_Nodes    = [t_nodes';    NaN;     NaN];
+Col_EulerExp = [y_eulerExp'; err_Exp; time_eulerExp];
+Col_EulerImp = [y_eulerImp'; err_Imp; time_eulerImp];
+Col_RK2      = [y_RK2';      err_RK2; time_RK2];
+Col_RK3      = [y_RK3';      err_RK3; time_RK3];
+Col_RK4      = [y_RK4';      err_RK4; time_RK4];
+Col_Analyt   = [y';          NaN;     NaN];
+
+Results = table(Col_Nodes, Col_EulerExp, Col_EulerImp, Col_RK2, Col_RK3, Col_RK4, Col_Analyt, ...
+    'VariableNames', {'Nodes', 'EulerExp', 'EulerImp', 'RK2', 'RK3', 'RK4', 'Analytical'});
+
+row_names = cell(N+2, 1);
+row_names{1} = 'Initial';
+for k = 1:N-1
+    row_names{k+1} = sprintf('Iteration_%d', k);
+end
+row_names{N+1} = 'Max_Abs_Error';
+row_names{N+2} = 'Complexity_sec';
+Results.Properties.RowNames = row_names;
+
+disp(Results);
+
+% Γραφική Παράσταση %
+figure('Name', 'Αποτελέσματα', 'NumberTitle', 'off');
+hold on;
+
+plot(t_nodes, y, 'k', 'LineWidth', 1.5, 'DisplayName', 'Analytical');
+plot(t_nodes, y_eulerExp, 'r', 'LineWidth', 1.5, 'DisplayName', 'Euler Exp');
+plot(t_nodes, y_eulerImp, 'b', 'LineWidth', 1.5, 'DisplayName', 'Euler Imp');
+plot(t_nodes, y_RK2, 'g', 'LineWidth', 1.5, 'DisplayName', 'RK2');
+plot(t_nodes, y_RK3, 'm', 'LineWidth', 1.5, 'DisplayName', 'RK3');
+plot(t_nodes, y_RK4, 'c', 'LineWidth', 1.5, 'DisplayName', 'RK4');
+
+legend('Location', 'NorthWest');
+title('Σύγκριση Αριθμητικών Μεθόδων');
+xlabel('t');
+ylabel('y(t)');
+grid on;
+hold off;
