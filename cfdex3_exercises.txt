@@ -1,0 +1,39 @@
+COMPUTATIONAL FLUID DYNAMICS
+9th SEMESTER, S.A.M.P.S.
+3rd SET OF EXERCISES
+Academic Year: 2025-26
+
+--------------------------------------------------
+
+3rd SET OF EXERCISES
+(Finite differences, numerical solution of ordinary differential equations - boundary value problems)
+
+
+Exercise 3.1
+----------------
+Mineral oil (density ρ=870 kg/m^3 and viscosity μ=0.104 kg/ms) is transported in a pipe of diameter D=1 m with a flow rate Q=0.16 m^3/s.
+
+Requested:
+
+1. Implement in the Matlab programming language the numerical solution of the problem of steady, fully developed, laminar flow under a constant pressure gradient in the said pipe to determine the radial velocity distribution along the main flow direction. The results, apart from their numerical form, should also be presented in the form of a suitable plot. (You can solve the algebraic system of equations using a direct or iterative method).
+
+2. Verify the value of the mean velocity obtained theoretically with the value obtained by numerically integrating the results for the velocity distribution.
+
+3. Evaluate the effect of the computational grid variation on the numerical solution of the problem (execute the implemented Matlab code selecting a different number of computational nodes each time). Present the resulting numerical solutions in the form of plots. Comment on the results.
+
+
+Notes:
+---------------------------------------------
+Note 1: Exercise 3.1 constitutes Example 2 from the lecture titled: "Finite Differences - Numerical Solution of Ordinary Differential Equations - Boundary Value Problems". You do not need to prove the non-dimensional form of the ordinary differential equation describing the fluid mechanics problem in question.
+
+Note 2: For this specific flow type, the theoretical solution for the radial velocity distribution along the main flow direction is:
+
+ux(r) = - [ (R^2 - r^2) / 4μ ] * (dp/dx)
+
+The maximum velocity is at the axis and is:
+
+umax = ux(r=0) = - (R^2 / 4μ) * (dp/dx)
+
+For the spatial mean velocity:
+
+Vaverage = Q / E = Q / (πD^2 / 4) = umax / 2
