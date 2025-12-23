@@ -1,0 +1,31 @@
+COMPUTATIONAL FLUID DYNAMICS
+9th SEMESTER, S.A.M.P.S.
+4th SET OF EXERCISES
+Academic Year: 2025-26
+
+--------------------------------------------------
+
+4th SET OF EXERCISES
+(Numerical solution of elliptic partial differential equations with finite differences)
+
+
+Exercise 4.1
+----------------
+A horizontal duct of square cross-section with side a = 1 m transports mineral oil (density ρ = 870 kg/m^3 and viscosity μ = 0.104 kg/ms) with a flow rate Q = 0.17 m^3/s.
+
+Requested:
+
+Implement in the Matlab programming language the numerical solution of the problem of steady, fully developed, laminar flow under the influence of a constant pressure gradient in the said duct to determine the distribution of the velocity component along the main flow direction in the cross-section. The results, apart from their numerical form, should also be presented in the form of suitable plots. (You can solve the algebraic system of equations using a direct or iterative method: Jacobi, Gauss-Seidel, Successive Over Relaxation, ADI).
+
+
+Notes:
+---------------------------------------------
+Note 1: Exercise 4.1 constitutes the Example from the lecture titled: "Finite Difference Method - Solving Elliptic Partial Differential Equations".
+
+Note 2: For this specific flow type, the theoretical relationship between the flow rate and the pressure gradient for a horizontal duct and a square cross-section (a=b) is:
+
+Q = -0.035144 * (a^4 / μ) * (dp/dz)
+
+The spatial mean velocity along the main flow direction is:
+
+Waverage = Q / E = Q / (a*b) = (∫ w dE) / E
