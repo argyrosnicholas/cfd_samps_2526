@@ -1,0 +1,46 @@
+COMPUTATIONAL FLUID DYNAMICS
+9th SEMESTER, S.A.M.P.S. (School of Applied Mathematical and Physical Sciences)
+5th SET OF EXERCISES
+Academic Year: 2025-26
+
+--------------------------------------------------
+
+5th SET OF EXERCISES
+(Numerical solution of parabolic partial differential equations with finite differences)
+
+
+Exercise 5.1
+----------------
+Consider the unknown temperature T = T(t, x) of a one-dimensional heat diffusion problem in a duct of length L = 1 m, governed by the following equation:
+
+∂T/∂t = ∂²T/∂x²
+
+where the independent variables t and x denote time and the longitudinal distance measured from the upstream end of the duct, respectively. The domain of the equation is the set D = {0 ≤ t ≤ T_final, 0 ≤ x ≤ L} with T_final = 2 s.
+
+Furthermore, the initial condition (Dirichlet type) for the temperature at time t = 0 is given:
+
+T(t = 0, x) = 10,    0 ≤ x ≤ L
+
+and the boundary conditions (Dirichlet type) at the upstream (x = 0) and downstream (x = L) ends of the duct are:
+
+T(t, x = 0) = 0,    0 < t ≤ T_final
+and
+T(t, x = L) = 0,    0 < t ≤ T_final, respectively.
+
+
+Requested:
+----------------
+Implement in the Matlab programming language the solution of the above equation to determine the spatial distribution of temperature for each time step using:
+
+1. The Explicit numerical scheme.
+2. The Simple Implicit scheme.
+3. The Crank-Nicolson implicit scheme.
+
+For each scheme, the results should be presented in the form of suitable plots and, indicatively, some results in numerical form.
+
+Note: For the explicit scheme, a stability check must be performed.
+
+
+Deadline:
+----------------
+Until the day of the final written examination.
